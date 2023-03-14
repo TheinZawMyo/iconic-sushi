@@ -26,47 +26,47 @@ namespace frontend.Services
         public async Task<IEnumerable<Phone>> GetAllPhones()
         {
             var response = await this.client.GetAsync("/api/inventory");
-
+            response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
             var myData = JsonSerializer.Deserialize<IEnumerable<Phone>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
             return myData;
         }
 
-        //     public async Task<MyDataModel> GetMyDataByIdAsync(int id)
-        //     {
-        //         var response = await _httpClient.GetAsync($"{_apiBaseUrl}/mydata/{id}");
-        //         response.EnsureSuccessStatusCode();
+        public async Task<Phone> GetPhoneById(int id)
+        {
+            var response = await this.client.GetAsync($"api/inventory/{id}");
+            response.EnsureSuccessStatusCode();
 
-        //         var json = await response.Content.ReadAsStringAsync();
-        //         var myData = JsonSerializer.Deserialize<MyDataModel>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            var json = await response.Content.ReadAsStringAsync();
+            var myData = JsonSerializer.Deserialize<Phone>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-        //         return myData;
-        //     }
+            return myData;
+        }
 
-        // public async Task AddPhone(Phone phone)
-        // {
-        //     var json = JsonSerializer.Serialize(phone);
-        //     var data = new StringContent(json, Encoding.UTF8, "application/json");
+        public async Task AddPhone(Phone phone)
+        {
+            var json = JsonSerializer.Serialize(phone);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-        //     var response = await this.client.PostAsync("api/inventory", data);
-        //     response.EnsureSuccessStatusCode();
-        // }
+            var response = await this.client.PostAsync("api/inventory", data);
+            // response.EnsureSuccessStatusCode();
+        }
 
-        //     public async Task UpdateMyDataAsync(MyDataModel myData)
-        //     {
-        //         var json = JsonSerializer.Serialize(myData);
-        //         var data = new StringContent(json, Encoding.UTF8, "application/json");
+        public async Task UpdatePhoneById(int id, Phone phone)
+        {
+            var json = JsonSerializer.Serialize(phone);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-        //         var response = await _httpClient.PutAsync($"{_apiBaseUrl}/mydata/{myData.Id}", data);
-        //         response.EnsureSuccessStatusCode();
-        //     }
+            var response = await this.client.PutAsync($"api/inventory/{id}", data);
+            response.EnsureSuccessStatusCode();
+        }
 
-        //     public async Task DeleteMyDataAsync(int id)
-        //     {
-        //         var response = await _httpClient.DeleteAsync($"{_apiBaseUrl}/mydata/{id}");
-        //         response.EnsureSuccessStatusCode();
-        //     }
+        public async Task DeletePhoneById(int id)
+        {
+            var response = await this.client.DeleteAsync($"api/inventory/{id}");
+            response.EnsureSuccessStatusCode();
+        }
     }
 
 }

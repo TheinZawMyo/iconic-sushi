@@ -1,26 +1,15 @@
 ﻿@page "/"
+@inject IToastService toastService
+@inject PhoneService phoneService
 
 <PageTitle>Index</PageTitle>
 
 <div class="container">
     <h1>Mobile Phones Inventory List</h1>
-    <div class="col-md-6">
+    <div class="col-md-12 d-flex justify-content-end">
         <a href='/phone/add' class="btn btn-primary" role="button">
-            <i class="fas fa-user-plus"></i>
             Add New
         </a>
-    </div>
-    <div class="input-group col-md-6">
-        @* <input type="text" class="form-control" placeholder="Search user by name"
-               @bind="SearchString" @bind:event="oninput" @onkeyup="FilterUser" />
-        @if (SearchString.Length > 0)
-        {
-            <div class="input-group-append">
-                <button class="btn btn-danger" @onclick="ResetSearch">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div> 
-        }*@
     </div>
     <br>
     <table class="table table-striped align-middle table-bordered">
@@ -78,8 +67,8 @@
                             }
                         </td>
                         <td>
-                            @* <button class="btn btn-primary" @onclick="() => EditMyData(myData)">Edit</button>
-                            <button class="btn btn-danger" @onclick="() => DeleteMyData(myData.Id)">Delete</button> *@
+                            <a href='@($"phone/{phone.Id}/edit")' class="btn btn-success" >Edit</a>
+                            <button class="btn btn-danger" @onclick="@(() => ConfirmDelete(phone.Id))" >Delete</button>
                         </td>
                     </tr>
                 }
@@ -92,13 +81,61 @@
     </table>
 </div>
 
+
+
 @code {
     private IEnumerable<Phone> PhonesList { get; set; }
+    private int deletingItemId;
+    private bool showConfirmDeleteModal;
 
-    [Inject]
-    private PhoneService PhoneService { get; set; }
+    private void ConfirmDelete(int id)
+    {
+        deletingItemId = id;
+        showConfirmDeleteModal = true;
+    }
+    
     protected override async Task OnInitializedAsync()
     {
-        PhonesList = await PhoneService.GetAllPhones();
+        await LoadPhoneList();
     }
+
+    private async Task LoadPhoneList()
+    {
+        PhonesList = await phoneService.GetAllPhones();
+    }
+
+    private async Task DeletePhone()
+    {
+        await phoneService.DeletePhoneById(deletingItemId);
+        toastService.ShowSuccess("Phone Information was deleted successfully!");
+        showConfirmDeleteModal = false;
+        await LoadPhoneList();
+
+    }
+
+}
+
+
+@if (showConfirmDeleteModal)
+{
+    <div class="modal fade show" tabindex="-1" role="dialog" style="display: block;" aria-modal="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Delete</h5>
+                    <button type="button" class="close" @onclick="() => showConfirmDeleteModal = false">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this item?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="() => showConfirmDeleteModal = false">Cancel</button>
+                    <button type="button" class="btn btn-danger" @onclick="DeletePhone">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
 }

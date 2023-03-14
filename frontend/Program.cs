@@ -1,3 +1,4 @@
+using Blazored.Toast;
 using frontend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddHttpClient<PhoneService>(client =>
 {
     client.BaseAddress = builder.Configuration.GetServiceUri("backend");
 });
+builder.Services.AddBlazoredToast();
 
 var app = builder.Build();
 

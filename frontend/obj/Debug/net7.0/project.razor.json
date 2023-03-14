@@ -87,6 +87,65 @@
         }
       },
       {
+        "HashCode": 216719400,
+        "Kind": "Components.Component",
+        "Name": "frontend.Pages.PhoneEdit",
+        "AssemblyName": "frontend",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "PhoneEdit"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Id",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Id",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "frontend.Pages.PhoneEdit",
+          "Common.TypeNamespace": "frontend.Pages",
+          "Common.TypeNameIdentifier": "PhoneEdit"
+        }
+      },
+      {
+        "HashCode": 25879702,
+        "Kind": "Components.Component",
+        "Name": "frontend.Pages.PhoneEdit",
+        "AssemblyName": "frontend",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "frontend.Pages.PhoneEdit"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Id",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Id",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "frontend.Pages.PhoneEdit",
+          "Common.TypeNamespace": "frontend.Pages",
+          "Common.TypeNameIdentifier": "PhoneEdit",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -1873319412,
         "Kind": "Components.Component",
         "Name": "frontend.Pages.PhoneAdd",
@@ -120,6 +179,102 @@
           "Common.TypeName": "frontend.Pages.PhoneAdd",
           "Common.TypeNamespace": "frontend.Pages",
           "Common.TypeNameIdentifier": "PhoneAdd",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -611497778,
+        "Kind": "Components.Component",
+        "Name": "frontend.Shared.SurveyPrompt",
+        "AssemblyName": "frontend",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title",
+              "Common.GloballyQualifiedTypeName": "global::System.String"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "frontend.Shared.SurveyPrompt",
+          "Common.TypeNamespace": "frontend.Shared",
+          "Common.TypeNameIdentifier": "SurveyPrompt"
+        }
+      },
+      {
+        "HashCode": 2073691931,
+        "Kind": "Components.Component",
+        "Name": "frontend.Shared.SurveyPrompt",
+        "AssemblyName": "frontend",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "frontend.Shared.SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title",
+              "Common.GloballyQualifiedTypeName": "global::System.String"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "frontend.Shared.SurveyPrompt",
+          "Common.TypeNamespace": "frontend.Shared",
+          "Common.TypeNameIdentifier": "SurveyPrompt",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 777147748,
+        "Kind": "Components.Component",
+        "Name": "frontend.Shared.NavMenu",
+        "AssemblyName": "frontend",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "frontend.Shared.NavMenu",
+          "Common.TypeNamespace": "frontend.Shared",
+          "Common.TypeNameIdentifier": "NavMenu"
+        }
+      },
+      {
+        "HashCode": -1496919486,
+        "Kind": "Components.Component",
+        "Name": "frontend.Shared.NavMenu",
+        "AssemblyName": "frontend",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "frontend.Shared.NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "frontend.Shared.NavMenu",
+          "Common.TypeNamespace": "frontend.Shared",
+          "Common.TypeNameIdentifier": "NavMenu",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -226,102 +381,6 @@
           "Common.TypeNamespace": "frontend.Shared",
           "Common.TypeNameIdentifier": "MainLayout",
           "Components.IsSpecialKind": "Components.ChildContent",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -611497778,
-        "Kind": "Components.Component",
-        "Name": "frontend.Shared.SurveyPrompt",
-        "AssemblyName": "frontend",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title",
-              "Common.GloballyQualifiedTypeName": "global::System.String"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "frontend.Shared.SurveyPrompt",
-          "Common.TypeNamespace": "frontend.Shared",
-          "Common.TypeNameIdentifier": "SurveyPrompt"
-        }
-      },
-      {
-        "HashCode": 2073691931,
-        "Kind": "Components.Component",
-        "Name": "frontend.Shared.SurveyPrompt",
-        "AssemblyName": "frontend",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "frontend.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title",
-              "Common.GloballyQualifiedTypeName": "global::System.String"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "frontend.Shared.SurveyPrompt",
-          "Common.TypeNamespace": "frontend.Shared",
-          "Common.TypeNameIdentifier": "SurveyPrompt",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 777147748,
-        "Kind": "Components.Component",
-        "Name": "frontend.Shared.NavMenu",
-        "AssemblyName": "frontend",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "frontend.Shared.NavMenu",
-          "Common.TypeNamespace": "frontend.Shared",
-          "Common.TypeNameIdentifier": "NavMenu"
-        }
-      },
-      {
-        "HashCode": -1496919486,
-        "Kind": "Components.Component",
-        "Name": "frontend.Shared.NavMenu",
-        "AssemblyName": "frontend",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "frontend.Shared.NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "frontend.Shared.NavMenu",
-          "Common.TypeNamespace": "frontend.Shared",
-          "Common.TypeNameIdentifier": "NavMenu",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -19629,6 +19688,11 @@
     {
       "FilePath": "d:\\Zetasynq\\iconic_sushi\\frontend\\Pages\\Index.razor",
       "TargetPath": "Pages\\Index.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "d:\\Zetasynq\\iconic_sushi\\frontend\\Pages\\PhoneEdit.razor",
+      "TargetPath": "Pages\\PhoneEdit.razor",
       "FileKind": "component"
     },
     {

@@ -1,3 +1,11 @@
+D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.csproj.AssemblyReference.cache
+D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.GeneratedMSBuildEditorConfig.editorconfig
+D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.AssemblyInfoInputs.cache
+D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.AssemblyInfo.cs
+D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.csproj.CoreCompileInputs.cache
+D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.MvcApplicationPartsAssemblyInfo.cache
+D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.RazorAssemblyInfo.cache
+D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.RazorAssemblyInfo.cs
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\appsettings.Development.json
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\appsettings.json
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\frontend.staticwebassets.runtime.json
@@ -14,14 +22,6 @@ D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Microsoft.AspNetCore.Componen
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Microsoft.AspNetCore.Metadata.dll
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Microsoft.JSInterop.dll
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Microsoft.Tye.Extensions.Configuration.dll
-D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.csproj.AssemblyReference.cache
-D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.GeneratedMSBuildEditorConfig.editorconfig
-D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.AssemblyInfoInputs.cache
-D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.AssemblyInfo.cs
-D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.csproj.CoreCompileInputs.cache
-D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.MvcApplicationPartsAssemblyInfo.cache
-D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.RazorAssemblyInfo.cache
-D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.RazorAssemblyInfo.cs
 D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\staticwebassets\msbuild.frontend.Microsoft.AspNetCore.StaticWebAssets.props
 D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\staticwebassets\msbuild.build.frontend.props
 D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.frontend.props
