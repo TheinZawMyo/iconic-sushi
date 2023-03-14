@@ -1,0 +1,104 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<div class="container">
+    <h1>Mobile Phones Inventory List</h1>
+    <div class="col-md-6">
+        <a href='/phone/add' class="btn btn-primary" role="button">
+            <i class="fas fa-user-plus"></i>
+            Add New
+        </a>
+    </div>
+    <div class="input-group col-md-6">
+        @* <input type="text" class="form-control" placeholder="Search user by name"
+               @bind="SearchString" @bind:event="oninput" @onkeyup="FilterUser" />
+        @if (SearchString.Length > 0)
+        {
+            <div class="input-group-append">
+                <button class="btn btn-danger" @onclick="ResetSearch">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div> 
+        }*@
+    </div>
+    <br>
+    <table class="table table-striped align-middle table-bordered">
+        <thead class="table-primary">
+            <tr>
+                <th>ID</th>
+                <th>Model</th>
+                <th>Brand</th>
+                <th>Quantity</th>
+                <th>Price Per Item</th>
+                <th>Specifications</th>
+                <th>InStock or Not</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        @if(PhonesList == null)
+        {
+            <p>Loading...</p>
+        }else if(PhonesList.Any())
+        {
+            <tbody>
+                @foreach (var phone in PhonesList)
+                {
+                    <tr>
+                        <td>#@phone.Id</td>
+                        <td>@phone.Model</td>
+                        <td>
+                            @if(@phone.CompanyId == 1)
+                            {
+                                <span>Apple</span>
+                            }else if(@phone.CompanyId == 2)
+                            {
+                               <span>Samsung</span>
+                            }else if(@phone.CompanyId == 3)
+                            {
+                                <span>Xiaomi</span>
+                            }else if(@phone.CompanyId == 4)
+                            {
+                                <span>Sony</span>
+                            }else if(@phone.CompanyId == 5)
+                            {
+                                <span>Oppo</span>
+                            }else {
+                                <span>Oneplus</span>
+                            }
+                        </td>
+                        <td>@phone.Quantity</td>
+                        <td>$ @phone.PricePerItem</td>
+                        <td>@phone.Specs</td>
+                        <td>@if(@phone.Quantity > 0)
+                            {
+                                <span class="text-info">Instock</span>
+                            }else {
+                                <span class="text-warning">Out of Stock</span>
+                            }
+                        </td>
+                        <td>
+                            @* <button class="btn btn-primary" @onclick="() => EditMyData(myData)">Edit</button>
+                            <button class="btn btn-danger" @onclick="() => DeleteMyData(myData.Id)">Delete</button> *@
+                        </td>
+                    </tr>
+                }
+                
+            </tbody>
+
+        }else {
+            <p>No data available.</p>
+        }
+    </table>
+</div>
+
+@code {
+    private IEnumerable<Phone> PhonesList { get; set; }
+
+    [Inject]
+    private PhoneService PhoneService { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        PhonesList = await PhoneService.GetAllPhones();
+    }
+}

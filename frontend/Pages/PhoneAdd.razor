@@ -1,0 +1,63 @@
+@page "/phone/add"
+
+<h1 class="text-center">Add Mobile Phone</h1> 
+
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="card w-50 p-3">
+        <EditForm Model="@phone" OnValidSubmit="@HandleValidSubmit" >
+            @* <ValidationSummary /> *@
+            <DataAnnotationsValidator />
+            <div class="form-group">
+                <label for="model">Model:</label>
+                <InputText id="model" @bind-Value="@phone.Model" class="form-control" placeholder="Enter model name"/>
+                <ValidationMessage For="@(() => phone.Model)" />
+            </div>
+            <div class="form-group">
+                <label for="my-dropdown">Select a Brand:</label>
+                <InputSelect id="my-dropdown" @bind-Value="@phone.CompanyId" class="form-select">
+                    <option value="1">Apple</option>
+                    <option value="2">Samsung</option>
+                    <option value="3">Xiaomi</option>
+                    <option value="4">Sony</option>
+                    <option value="5">Oppo</option>
+                    <option value="6">Oneplus</option>
+                </InputSelect>
+                <ValidationMessage For="@(() => phone.CompanyId)" />
+            </div>
+            <div class="form-group">
+                <label for="qty">Quantity:</label>
+                <InputNumber id="qty" @bind-Value="@phone.Quantity" class="form-control" min="0" placeholder="Enter device qty"/>
+                <ValidationMessage For="@(() => phone.Quantity)" />
+            </div>
+            <div class="form-group">
+                <label for="price">Price Per Item:</label>
+                <InputNumber id="price" @bind-Value="@phone.PricePerItem" class="form-control" min="1" placeholder="Enter price per item"/>
+                <ValidationMessage For="@(() => phone.PricePerItem)" />
+            </div>
+            <div class="form-group">
+                <label for="specs">Specifications:</label>
+                <InputTextArea id="specs" @bind-Value="@phone.Specs" class="form-control" placeholder="Enter specifications"/>
+                <ValidationMessage For="@(() => phone.Specs)" />
+            </div>
+            <br>
+            <div class="form-group d-flex justify-content-around">
+                <button type="submit" class="btn btn-primary" style="width: 40%">Save</button>
+                <a href="/" class="btn btn-light" style="width: 40%">Cancel</a>
+            </div>
+        </EditForm>
+
+    </div>
+</div>
+
+@code {
+    private Phone phone = new Phone();
+    [Inject]
+    private PhoneService PhoneService { get; set; }
+    private async Task HandleValidSubmit()
+    {
+        @* await PhoneService.AddPhone(phone);
+        ToastService.ShowSuccess("My data was created successfully!", "Success");
+        NavigationManager.NavigateTo("/"); *@
+    }
+
+}
