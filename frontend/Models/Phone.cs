@@ -14,7 +14,7 @@ namespace frontend.Models
         
         public long Quantity { get; set; } = 0;
 
-        public long PricePerItem { get; set; } = 1;
+        public decimal PricePerItem { get; set; } = 1;
 
         public string? Specs { get; set; }  
         // public bool Stock { get; set; } = true;

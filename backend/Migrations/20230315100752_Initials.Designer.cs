@@ -11,7 +11,7 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230314092321_Initials")]
+    [Migration("20230315100752_Initials")]
     partial class Initials
     {
         /// <inheritdoc />
@@ -37,9 +37,9 @@ namespace backend.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("TEXT");
 
-                    b.Property<long?>("PricePerItem")
+                    b.Property<decimal?>("PricePerItem")
                         .IsRequired()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<long>("Quantity")
                         .HasColumnType("INTEGER");

@@ -16,7 +16,7 @@ namespace backend.Models
         public long Quantity { get; set; } = 0;
         
         [Required(ErrorMessage = "Price field is required")]
-        public long? PricePerItem { get; set; }
+        public decimal? PricePerItem { get; set; }
 
         public string? Specs { get; set; }
         // public bool Stock { get; set; } = true;

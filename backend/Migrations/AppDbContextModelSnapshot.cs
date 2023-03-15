@@ -34,9 +34,9 @@ namespace backend.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("TEXT");
 
-                    b.Property<long?>("PricePerItem")
+                    b.Property<decimal?>("PricePerItem")
                         .IsRequired()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<long>("Quantity")
                         .HasColumnType("INTEGER");

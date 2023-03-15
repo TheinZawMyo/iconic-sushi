@@ -20,7 +20,7 @@ namespace backend.Migrations
                     Model = table.Column<string>(type: "TEXT", maxLength: 40, nullable: false),
                     CompanyId = table.Column<int>(type: "INTEGER", nullable: false),
                     Quantity = table.Column<long>(type: "INTEGER", nullable: false),
-                    PricePerItem = table.Column<long>(type: "INTEGER", nullable: false),
+                    PricePerItem = table.Column<decimal>(type: "TEXT", nullable: false),
                     Specs = table.Column<string>(type: "TEXT", nullable: true),
                     DateOfImport = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
