@@ -1,6 +1,9 @@
 ﻿@page "/"
+@using Newtonsoft.Json;
 @inject IToastService toastService
+@using frontend.Models
 @inject PhoneService phoneService
+@inject ILogger<Index> logger
 
 <PageTitle>Index</PageTitle>
 
@@ -12,27 +15,30 @@
         </a>
     </div>
     <br>
-    <table class="table table-striped align-middle table-bordered">
-        <thead class="table-primary">
-            <tr>
-                <th>ID</th>
-                <th>Model</th>
-                <th>Brand</th>
-                <th>Quantity</th>
-                <th>Price Per Item</th>
-                <th>Specifications</th>
-                <th>InStock or Not</th>
-                <th>Updated Date</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        @if(PhonesList == null)
-        {
-            <p>Loading...</p>
-        }else if(PhonesList.Any())
-        {
+    @if(Items == null)
+    {
+        <p>Loading...</p>
+    }else if(Items.Items.Count == 0)
+    {            
+        <p>No data available.</p>
+    }else {
+        <table class="table table-striped align-middle table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Model</th>
+                    <th>Brand</th>
+                    <th>Quantity</th>
+                    <th>Price Per Item</th>
+                    <th>Specifications</th>
+                    <th>InStock or Not</th>
+                    <th>Updated Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        
             <tbody>
-                @foreach (var phone in PhonesList)
+                @foreach (var phone in Items.Items)
                 {
                     <tr>
                         <td>#@phone.Id</td>
@@ -76,17 +82,37 @@
                 }
                 
             </tbody>
-
-        }else {
-            <p>No data available.</p>
-        }
-    </table>
+        
+        </table>
+        <nav>
+            <ul class="pagination justify-content-end">
+                @if (Items.HasPreviousPage)
+                {
+                    <li class="page-item">
+                        <button class="page-link" @onclick="PreviousPage">Previous</button>
+                    </li>
+                }
+                @foreach (var pageNumber in Items.GetPageNumbers())
+                {
+                    <li class="page-item @(pageNumber == Items.PageNumber ? "active" : "")">
+                        <button class="page-link" @onclick="() => GotoPage(pageNumber)">@pageNumber</button>
+                    </li>
+                }
+                @if (Items.HasNextPage)
+                {
+                    <li class="page-item">
+                        <button class="page-link" @onclick="NextPage">Next</button>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
 </div>
 
 
 
 @code {
-    private IEnumerable<Phone> PhonesList { get; set; }
+    private PaginatedResult<Phone> Items;
     private int deletingItemId;
     private bool showConfirmDeleteModal;
 
@@ -103,7 +129,8 @@
 
     private async Task LoadPhoneList()
     {
-        PhonesList = await phoneService.GetAllPhones();
+        Items = await phoneService.GetPaginatedData();
+        logger.LogInformation("Received data: {data}", JsonConvert.SerializeObject(Items));
     }
 
     private async Task DeletePhone()
@@ -113,6 +140,21 @@
         showConfirmDeleteModal = false;
         await LoadPhoneList();
 
+    }
+
+    private async Task GotoPage(int pageNumber)
+    {
+        Items = await phoneService.GetPaginatedData(pageNumber, Items.PageSize);
+    }
+
+    private async Task NextPage()
+    {
+        Items = await phoneService.GetPaginatedData(Items.PageNumber + 1, Items.PageSize);
+    }
+
+    private async Task PreviousPage()
+    {
+        Items = await phoneService.GetPaginatedData(Items.PageNumber - 1, Items.PageSize);
     }
 
 }

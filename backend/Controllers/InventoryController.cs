@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using backend.Data;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace backend.Controllers;
 
@@ -25,11 +27,28 @@ public class InventoryController : ControllerBase
 
             return BadRequest(ModelState);
 
-        
+
         appDbContext.Phones.Add(newPhone);
         await appDbContext.SaveChangesAsync();
         return Ok(await appDbContext.Phones.ToListAsync());
-        
+
+    }
+
+    [HttpGet]
+    [Route("items")]
+    public ActionResult<PaginatedResult<Phone>> GetItems(int pageNumber = 1, int pageSize = 5)
+    {
+        var totalCount = appDbContext.Phones.Count();
+        var startIndex = (pageNumber - 1) * pageSize;
+        var items = appDbContext.Phones.Skip(startIndex).Take(pageSize).ToList();
+        var pagedItems = new PaginatedResult<Phone>
+        {
+            Items = items,
+            PageNumber = pageNumber,
+            PageSize = pageSize,
+            TotalCount = totalCount
+        };
+        return Ok(pagedItems);
     }
 
     // Read all phones
@@ -45,7 +64,7 @@ public class InventoryController : ControllerBase
     public async Task<ActionResult<Phone>> GetPhone(int id)
     {
         var phone = await appDbContext.Phones.FirstOrDefaultAsync(e => e.Id == id);
-        return (phone != null) ? Ok(phone): NotFound("Phone is not available");
+        return (phone != null) ? Ok(phone) : NotFound("Phone is not available");
     }
 
     // update phone
@@ -59,7 +78,7 @@ public class InventoryController : ControllerBase
             phone.CompanyId = updatePhone.CompanyId;
             phone.Quantity = updatePhone.Quantity;
             // phone.Stock = updatePhone.Stock;
-            phone.Specs = updatePhone.Specs;    
+            phone.Specs = updatePhone.Specs;
             await appDbContext.SaveChangesAsync();
             return Ok(phone);
         }

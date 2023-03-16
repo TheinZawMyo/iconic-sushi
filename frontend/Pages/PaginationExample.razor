@@ -1,0 +1,99 @@
+@page "/items"
+@using frontend.Models
+@inject PhoneService phoneService
+@using Newtonsoft.Json;
+
+@inject ILogger<Index> logger
+
+<h1>Items</h1>
+
+@if (Items == null)
+{
+    <p>Loading...</p>
+}
+else if (Items.Items.Count == 0)
+{
+    <p>No items found.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Items.Items)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Model</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <nav>
+        <ul class="pagination">
+            @if (Items.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <button class="page-link" @onclick="PreviousPage">Previous</button>
+                </li>
+            }
+            @foreach (var pageNumber in Items.GetPageNumbers())
+            {
+                <li class="page-item @(pageNumber == Items.PageNumber ? "active" : "")">
+                    <button class="page-link" @onclick="() => GotoPage(pageNumber)">@pageNumber</button>
+                </li>
+            }
+            @if (Items.HasNextPage)
+            {
+                <li class="page-item">
+                    <button class="page-link" @onclick="NextPage">Next</button>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+
+@code {
+    private PaginatedResult<Phone> Items;
+    @* private int CurrentPage = 1;
+    private int PageSize = 2;
+    private int TotalPages; *@
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPage();
+    }
+
+    private async Task LoadPage()
+    {
+        var result = await phoneService.GetPaginatedData();
+logger.LogInformation("Received data: {data}", JsonConvert.SerializeObject(result));
+        
+            Items = result;
+            @* CurrentPage = result.Page;
+            PageSize = result.PageSize;
+            TotalPages = (int)Math.Ceiling((double)result.TotalItems / PageSize); *@
+       
+    }
+
+    private async Task GotoPage(int pageNumber)
+    {
+        Items = await phoneService.GetPaginatedData(pageNumber, Items.PageSize);
+    }
+
+    private async Task NextPage()
+    {
+        Items = await phoneService.GetPaginatedData(Items.PageNumber + 1, Items.PageSize);
+    }
+
+    private async Task PreviousPage()
+    {
+        Items = await phoneService.GetPaginatedData(Items.PageNumber - 1, Items.PageSize);
+    }
+}

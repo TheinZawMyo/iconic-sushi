@@ -7,6 +7,7 @@ D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\frontend.runtimeconfig.json
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\frontend.dll
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\frontend.pdb
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Blazored.Toast.dll
+D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\System.Net.Http.Formatting.dll
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Microsoft.AspNetCore.Authorization.dll
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Microsoft.AspNetCore.Components.dll
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Forms.dll
@@ -14,6 +15,8 @@ D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Microsoft.AspNetCore.Componen
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Microsoft.AspNetCore.Metadata.dll
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Microsoft.JSInterop.dll
 D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Microsoft.Tye.Extensions.Configuration.dll
+D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\Zetasynq\iconic_sushi\frontend\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
 D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.csproj.AssemblyReference.cache
 D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.GeneratedMSBuildEditorConfig.editorconfig
 D:\Zetasynq\iconic_sushi\frontend\obj\Debug\net7.0\frontend.AssemblyInfoInputs.cache

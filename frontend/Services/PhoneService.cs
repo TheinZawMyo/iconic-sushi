@@ -5,6 +5,7 @@ using System.Text.Json;
 using frontend.Models;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using System.Net.Http.Formatting;
 
 namespace frontend.Services
 {
@@ -21,6 +22,14 @@ namespace frontend.Services
         public PhoneService(HttpClient client)
         {
             this.client = client;
+        }
+
+        public async Task<PaginatedResult<Phone>> GetPaginatedData(int pageNumber = 1, int pageSize = 5)
+        {
+            var response = await this.client.GetAsync($"api/inventory/items?pageNumber={pageNumber}&pageSize={pageSize}");
+            response.EnsureSuccessStatusCode();
+            var result = await response.Content.ReadAsAsync<PaginatedResult<Phone>>();
+            return result;
         }
 
         public async Task<IEnumerable<Phone>> GetAllPhones()
