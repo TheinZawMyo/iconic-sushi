@@ -50,65 +50,6 @@
         }
       },
       {
-        "HashCode": -1512067283,
-        "Kind": "Components.Component",
-        "Name": "frontend.Pages.PhoneEdit",
-        "AssemblyName": "frontend",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "PhoneEdit"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Id",
-            "TypeName": "System.Int32",
-            "Metadata": {
-              "Common.PropertyName": "Id",
-              "Common.GloballyQualifiedTypeName": "global::System.Int32"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "frontend.Pages.PhoneEdit",
-          "Common.TypeNamespace": "frontend.Pages",
-          "Common.TypeNameIdentifier": "PhoneEdit"
-        }
-      },
-      {
-        "HashCode": 1722377435,
-        "Kind": "Components.Component",
-        "Name": "frontend.Pages.PhoneEdit",
-        "AssemblyName": "frontend",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "frontend.Pages.PhoneEdit"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Id",
-            "TypeName": "System.Int32",
-            "Metadata": {
-              "Common.PropertyName": "Id",
-              "Common.GloballyQualifiedTypeName": "global::System.Int32"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "frontend.Pages.PhoneEdit",
-          "Common.TypeNamespace": "frontend.Pages",
-          "Common.TypeNameIdentifier": "PhoneEdit",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 1876737751,
         "Kind": "Components.Component",
         "Name": "frontend.Pages.PhoneAdd",
@@ -179,6 +120,65 @@
           "Common.TypeName": "frontend.Pages.PaginationExample",
           "Common.TypeNamespace": "frontend.Pages",
           "Common.TypeNameIdentifier": "PaginationExample",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1512067283,
+        "Kind": "Components.Component",
+        "Name": "frontend.Pages.PhoneEdit",
+        "AssemblyName": "frontend",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "PhoneEdit"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Id",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Id",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "frontend.Pages.PhoneEdit",
+          "Common.TypeNamespace": "frontend.Pages",
+          "Common.TypeNameIdentifier": "PhoneEdit"
+        }
+      },
+      {
+        "HashCode": 1722377435,
+        "Kind": "Components.Component",
+        "Name": "frontend.Pages.PhoneEdit",
+        "AssemblyName": "frontend",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "frontend.Pages.PhoneEdit"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Id",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Id",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "frontend.Pages.PhoneEdit",
+          "Common.TypeNamespace": "frontend.Pages",
+          "Common.TypeNameIdentifier": "PhoneEdit",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

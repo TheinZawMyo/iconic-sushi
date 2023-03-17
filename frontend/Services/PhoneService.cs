@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using System.Net.Http;
+
 using System.Text;
 using System.Text.Json;
 using frontend.Models;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using System.Net.Http.Formatting;
+
 
 namespace frontend.Services
 {
@@ -26,13 +23,13 @@ namespace frontend.Services
 
         public async Task<PaginatedResult<Phone>> GetPaginatedData(int pageNumber = 1, int pageSize = 5)
         {
-            var response = await this.client.GetAsync($"api/inventory/items?pageNumber={pageNumber}&pageSize={pageSize}");
+            var response = await this.client.GetAsync($"api/inventory?pageNumber={pageNumber}&pageSize={pageSize}");
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsAsync<PaginatedResult<Phone>>();
             return result;
         }
 
-        public async Task<IEnumerable<Phone>> GetAllPhones()
+        public async Task<IEnumerable<Phone>?> GetAllPhones()
         {
             var response = await this.client.GetAsync("/api/inventory");
             response.EnsureSuccessStatusCode();
@@ -42,7 +39,7 @@ namespace frontend.Services
             return myData;
         }
 
-        public async Task<Phone> GetPhoneById(int id)
+        public async Task<Phone?> GetPhoneById(int id)
         {
             var response = await this.client.GetAsync($"api/inventory/{id}");
             response.EnsureSuccessStatusCode();

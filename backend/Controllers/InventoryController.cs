@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using backend.Data;
 using backend.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
+using backend.Services;
 
 namespace backend.Controllers;
 
@@ -11,11 +8,11 @@ namespace backend.Controllers;
 [Route("api/[controller]")]
 public class InventoryController : ControllerBase
 {
-    private readonly AppDbContext appDbContext;
+    private readonly IPhoneService _phoneService;
 
-    public InventoryController(AppDbContext appDbContext)
+    public InventoryController(IPhoneService phoneService)
     {
-        this.appDbContext = appDbContext;
+        _phoneService = phoneService;
     }
 
 
@@ -24,62 +21,44 @@ public class InventoryController : ControllerBase
     public async Task<ActionResult<List<Phone>>> AddPhone(Phone newPhone)
     {
         if (!ModelState.IsValid)
-
             return BadRequest(ModelState);
-
-
-        appDbContext.Phones.Add(newPhone);
-        await appDbContext.SaveChangesAsync();
-        return Ok(await appDbContext.Phones.ToListAsync());
+        var phones = await _phoneService.AddPhone(newPhone);
+        return Ok(phones);
 
     }
 
     [HttpGet]
-    [Route("items")]
     public ActionResult<PaginatedResult<Phone>> GetItems(int pageNumber = 1, int pageSize = 5)
     {
-        var totalCount = appDbContext.Phones.Count();
-        var startIndex = (pageNumber - 1) * pageSize;
-        var items = appDbContext.Phones.Skip(startIndex).Take(pageSize).ToList();
-        var pagedItems = new PaginatedResult<Phone>
-        {
-            Items = items,
-            PageNumber = pageNumber,
-            PageSize = pageSize,
-            TotalCount = totalCount
-        };
-        return Ok(pagedItems);
+        var items = _phoneService.GetItems(pageNumber, pageSize);
+        if(items == null)
+            return NotFound();
+        return Ok(items.Value);
     }
 
     // Read all phones
-    [HttpGet]
-    public async Task<ActionResult<List<Phone>>> GetAllPhones()
-    {
-        var phones = await appDbContext.Phones.ToListAsync();
-        return Ok(phones);
-    }
+    // [HttpGet]
+    // public async Task<ActionResult<List<Phone>>> GetAllPhones()
+    // {
+    //     var phones = await appDbContext.Phones.ToListAsync();
+    //     return Ok(phones);
+    // }
 
     // Read single phone
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<Phone>> GetPhone(int id)
+    public async Task<ActionResult<Phone>?> GetPhone(int id)
     {
-        var phone = await appDbContext.Phones.FirstOrDefaultAsync(e => e.Id == id);
+        var phone = await _phoneService.GetPhone(id);
         return (phone != null) ? Ok(phone) : NotFound("Phone is not available");
     }
 
     // update phone
     [HttpPut("{id:int}")]
-    public async Task<ActionResult<Phone>> UpdatePhone(int id, Phone updatePhone)
+    public async Task<ActionResult<Phone>?> UpdatePhone(int id, Phone updatePhone)
     {
         if (updatePhone != null)
         {
-            var phone = await appDbContext.Phones.FirstOrDefaultAsync(e => e.Id == id);
-            phone!.Model = updatePhone.Model;
-            phone.CompanyId = updatePhone.CompanyId;
-            phone.Quantity = updatePhone.Quantity;
-            // phone.Stock = updatePhone.Stock;
-            phone.Specs = updatePhone.Specs;
-            await appDbContext.SaveChangesAsync();
+            var phone = await _phoneService.UpdatePhone(id, updatePhone);
             return Ok(phone);
         }
         return BadRequest("Phone not found");
@@ -87,16 +66,14 @@ public class InventoryController : ControllerBase
 
     // delete phone
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult<List<Phone>>> DeletePhone(int id)
+    public async Task<IActionResult> DeletePhone(int id)
     {
-        var phone = await appDbContext.Phones.FirstOrDefaultAsync(e => e.Id == id);
-        if (phone != null)
+        var deleted = await _phoneService.DeletePhone(id);
+        if (!deleted)
         {
-            appDbContext.Phones.Remove(phone);
-            await appDbContext.SaveChangesAsync();
-            return Ok(await appDbContext.Phones.ToListAsync());
+            return NotFound();
         }
 
-        return NotFound();
+        return NoContent();
     }
 }
